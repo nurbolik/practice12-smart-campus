@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Campus - Code-based</title>
+  <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, sans-serif; background: #f8fafc; color: #0f172a; }
+    main { max-width: 760px; margin: 0 auto; padding: 40px 18px; }
+    .badge { display: inline-block; background: #0f766e; color: #fff; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    h1 { font-size: 30px; margin: 12px 0 6px; }
+    .sub { color: #64748b; margin: 0 0 22px; }
+    .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: 0 1px 2px rgba(15,23,42,.04); }
+    .sample { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+    .sample div { background: #f8fafc; border-radius: 9px; padding: 10px 12px; }
+    .sample span { display: block; font-size: 11px; text-transform: uppercase; color: #64748b; letter-spacing: .04em; }
+    .sample b { font-size: 15px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input[type=number] { width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; }
+    .hint { color: #64748b; font-size: 12px; margin: 5px 0 0; }
+    .check { display: flex; align-items: center; gap: 8px; margin: 16px 0; font-size: 14px; }
+    button { background: #0f766e; color: #fff; border: 0; border-radius: 8px; padding: 11px 18px; font-size: 15px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #115e59; }
+    #result { margin-top: 18px; border-radius: 10px; padding: 14px 16px; border: 1px solid #e2e8f0; background: #f8fafc; }
+    #result.available { background: #ecfdf5; border-color: #a7f3d0; }
+    #result.unavailable { background: #fff1f2; border-color: #fecdd3; }
+    #result strong { display: block; margin-bottom: 3px; }
+    .meta { color: #64748b; font-size: 12px; margin-top: 18px; }
+    @media (max-width: 560px) { .row, .sample { grid-template-columns: 1fr; } h1 { font-size: 24px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="badge">CODE-BASED</span>
+    <h1>Smart Campus Room Availability</h1>
+    <p class="sub">One fictional room, fixed bookings, no login or database.</p>
+
+    <section class="card">
+      <div class="sample">
+        <div><span>Current time</span><b>540 (09:00)</b></div>
+        <div><span>Booking 1</span><b>600-660 (10:00-11:00)</b></div>
+        <div><span>Booking 2</span><b>720-780 (12:00-13:00)</b></div>
+      </div>
+
+      <form id="form">
+        <div class="row">
+          <div>
+            <label for="start">Start time (minutes from midnight)</label>
+            <input id="start" type="number" min="0" max="1440" value="660" />
+            <p class="hint">600 = 10:00. Must be after 540.</p>
+          </div>
+          <div>
+            <label for="duration">Duration (minutes)</label>
+            <input id="duration" type="number" min="0" max="240" value="60" />
+            <p class="hint">More than 0 and at most 120.</p>
+          </div>
+        </div>
+        <label class="check"><input id="blocked" type="checkbox" /> Room is blocked</label>
+        <button type="submit">Check availability</button>
+      </form>
+
+      <div id="result" role="status" aria-live="polite">Enter a time and press Check availability.</div>
+    </section>
+    <p class="meta">Fictional data only. Checks never change the booking list.</p>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

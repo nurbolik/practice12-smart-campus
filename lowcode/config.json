@@ -1,0 +1,14 @@
+{
+  "title": "Smart Campus Room Availability",
+  "subtitle": "Config-driven low-code simulation (no commercial builder access)",
+  "currentTime": 540,
+  "bookings": [
+    { "id": "B001", "start": 600, "end": 660 },
+    { "id": "B002", "start": 720, "end": 780 }
+  ],
+  "fields": [
+    { "id": "start", "label": "Start time (minutes)", "type": "number", "default": 660 },
+    { "id": "duration", "label": "Duration (minutes)", "type": "number", "default": 60 }
+  ],
+  "blockedLabel": "Room is blocked"
+}

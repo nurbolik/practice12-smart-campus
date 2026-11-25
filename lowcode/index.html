@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Smart Campus - Low-code simulation</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif; background: #eef2ff; color: #111827; }
+    main { max-width: 760px; margin: 0 auto; padding: 38px 18px; }
+    .badge { display: inline-block; background: #4338ca; color: #fff; border-radius: 6px; padding: 4px 8px; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
+    h1 { font-size: 29px; margin: 12px 0 4px; }
+    .sub { color: #4b5563; margin: 0 0 8px; }
+    .warn { background: #fff7ed; border: 1px solid #fed7aa; color: #9a3412; padding: 9px 11px; border-radius: 8px; font-size: 12px; margin: 0 0 18px; }
+    .card { background: #fff; border: 1px solid #c7d2fe; border-radius: 14px; padding: 20px; box-shadow: 0 8px 24px rgba(67,56,202,.08); }
+    .sample { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+    .sample div { background: #eef2ff; border-radius: 9px; padding: 10px 12px; }
+    .sample span { display: block; font-size: 11px; text-transform: uppercase; color: #6366f1; letter-spacing: .04em; }
+    .sample b { font-size: 14px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+    input[type=number] { width: 100%; padding: 10px 12px; border: 1px solid #a5b4fc; border-radius: 8px; font-size: 16px; }
+    .hint { color: #6b7280; font-size: 12px; margin: 5px 0 0; }
+    .check { display: flex; align-items: center; gap: 8px; margin: 16px 0; font-size: 14px; }
+    button { background: #4338ca; color: #fff; border: 0; border-radius: 8px; padding: 11px 18px; font-size: 15px; font-weight: 700; cursor: pointer; }
+    button:hover { background: #3730a3; }
+    #result { margin-top: 18px; border-radius: 10px; padding: 14px 16px; border: 1px solid #e5e7eb; background: #f9fafb; }
+    #result.available { background: #ecfdf5; border-color: #a7f3d0; }
+    #result.unavailable { background: #fff1f2; border-color: #fecdd3; }
+    #result strong { display: block; margin-bottom: 3px; }
+    .meta { color: #6b7280; font-size: 12px; margin-top: 18px; }
+    @media (max-width: 560px) { .row, .sample { grid-template-columns: 1fr; } h1 { font-size: 24px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="badge">LOW-CODE (SIMULATED)</span>
+    <h1>Smart Campus Room Availability</h1>
+    <p class="sub">Same contract, configured from <code>config.json</code>.</p>
+    <p class="warn"><b>Honest label:</b> Appsmith/Google sign-in was unavailable, so this is a config-driven simulation, not a published commercial low-code app. Behaviour is the same as the code-based page.</p>
+    <section class="card">
+      <div id="sample" class="sample"></div>
+      <form id="form"><div class="row" id="fields"></div><label class="check"><input id="blocked" type="checkbox" /> Room is blocked</label><button type="submit">Check availability</button></form>
+      <div id="result" role="status" aria-live="polite">Loading configuration...</div>
+    </section>
+    <p class="meta">Fictional data only. Configuration is read-only during checks.</p>
+  </main>
+  <script type="module" src="./renderer.js"></script>
+</body>
+</html>
